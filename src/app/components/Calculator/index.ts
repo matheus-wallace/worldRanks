@@ -1,19 +1,21 @@
-const calculator = (
-  value1: number,
-  value2: number,
-  operator: string,
-): number | null | string => {
+const calculator = (value1: number, value2: number, operator: string): number | null | string => {
+  const test = () => {
+    return 'logTornto';
+  };
+
+  test();
+
   switch (operator) {
-    case "+":
+    case '+':
       return value1 + value2;
-    case "-":
+    case '-':
       return value1 - value2;
-    case "*":
+    case '*':
       return value1 * value2;
-    case "/":
+    case '/':
       return value2 !== 0 ? value1 / value2 : null;
     default:
-      throw new Error("Operador inválido");
+      throw new Error('Operador inválido');
   }
 };
 
