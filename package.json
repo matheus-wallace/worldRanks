@@ -18,6 +18,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.2.2",
     "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
