@@ -2,22 +2,14 @@
 
 import Image from 'next/image';
 import React from 'react';
-import { HeaderContainer, OverlayImage } from './style';
+import { BackgroundImage, HeaderContainer, OverlayImage } from './style';
 
 const Header = () => {
   return (
     <header>
       <HeaderContainer>
-        <Image
-          src="/assets/hero-image-wr.jpg"
-          alt="background-header"
-          layout="responsive"
-          width={1280}
-          height={720}
-          objectPosition="center"
-        />
-
-        <OverlayImage>
+        <BackgroundImage src="/assets/hero-image-wr.jpg" alt="background-header" width={1280} height={720} />
+        <OverlayImage data-testid="overlay-image">
           <Image src={'/assets/Logo.svg'} width={250} height={250} alt="Logo world Ranks" />
         </OverlayImage>
       </HeaderContainer>
