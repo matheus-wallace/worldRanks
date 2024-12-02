@@ -4,6 +4,7 @@ import Image from 'next/image';
 export const HeaderContainer = styled.div`
   position: relative;
   width: 100%;
+  height: 100%;
 `;
 
 export const BackgroundImage = styled(Image)`
