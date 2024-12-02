@@ -1,7 +1,14 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 export const HeaderContainer = styled.div`
   position: relative;
+  width: 100%;
+`;
+
+export const BackgroundImage = styled(Image)`
+  object-fit: cover;
+  object-position: center;
   width: 100%;
 `;
 
