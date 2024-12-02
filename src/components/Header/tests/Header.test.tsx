@@ -8,6 +8,7 @@ describe('Header component', () => {
     const backgroundImage = screen.getByAltText('background-header');
     expect(backgroundImage).toBeInTheDocument();
     expect(backgroundImage).toHaveStyle('width: 100%');
+    expect(backgroundImage).toHaveStyle('object-fit: cover;');
   });
 
   it('should render the logo image inside overlay', () => {
