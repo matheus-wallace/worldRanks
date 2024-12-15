@@ -2,6 +2,7 @@
 import { useContextCountry } from '@/context/DataContext';
 import './global.css';
 import { useEffect } from 'react';
+import { LoadingCloseCountries } from '@/components/LoadingSkeleton';
 
 export default function Home() {
   const { data, error, loading, fetchData } = useContextCountry();
@@ -18,7 +19,7 @@ export default function Home() {
 
   return (
     <main>
-      {loading && <p>Loading...</p>}
+      {loading && <LoadingCloseCountries />}
       <ul>
         {data &&
           data.map((country, index) => (
