@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Loader } from './styles';
 import { HStack, Skeleton, Stack } from '@chakra-ui/react';
 
 export const LoadingRowList = () => {
