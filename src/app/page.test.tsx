@@ -4,7 +4,7 @@ import Home from '@/app/page';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 
 // Mock do contexto
-jest.mock('@/Context/DataContext', () => ({
+jest.mock('../Context/DataContext', () => ({
   useContextCountry: jest.fn(),
 }));
 
