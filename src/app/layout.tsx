@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { Provider } from '@/components/ui/provider';
 import Header from '@/components/Header';
-import { DataProvider } from '@/context/DataContext';
+import { DataCountryProvider } from '@/Context/DataContext';
 
 export const metadata: Metadata = {
   title: 'World Ranks',
@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <DataProvider>
+        <DataCountryProvider>
           <Provider>
             <Header />
             {children}
           </Provider>
-        </DataProvider>
+        </DataCountryProvider>
       </body>
     </html>
   );

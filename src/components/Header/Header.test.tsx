@@ -23,5 +23,6 @@ describe('Header component', () => {
     const overlayImage = screen.getByTestId('overlay-image');
     expect(overlayImage).toHaveStyle('position: absolute');
     expect(overlayImage).toHaveStyle('z-index: 4');
+    expect(overlayImage).toHaveStyle('padding: 0rem 8rem');
   });
 });

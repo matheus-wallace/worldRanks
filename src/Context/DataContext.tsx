@@ -42,16 +42,16 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 export const useContextCountry = (): DataContextType => {
   const context = useContext(DataContext);
   if (!context) {
-    throw new Error('useData must be used within a DataProvider');
+    throw new Error('useData must be used within a DataCountryProvider');
   }
   return context;
 };
 
-type DataProviderProps = {
+type DataCountryProviderProps = {
   children: ReactNode;
 };
 
-export const DataProvider = ({ children }: DataProviderProps) => {
+export const DataCountryProvider = ({ children }: DataCountryProviderProps) => {
   const [data, setData] = useState<Country[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
