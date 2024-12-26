@@ -1,8 +1,9 @@
 'use client';
-import { useContextCountry } from '@/context/DataContext';
+import { useContextCountry } from '@/Context/DataContext';
 import './global.css';
 import { useEffect } from 'react';
-import { LoadingCloseCountries } from '@/components/LoadingSkeleton';
+import { LoadingRowList } from '@/components/LoadingSkeleton';
+import Error from '@/components/Error';
 
 export default function Home() {
   const { data, error, loading, fetchData } = useContextCountry();
@@ -11,15 +12,12 @@ export default function Home() {
     if (!data) {
       fetchData();
     }
-
-    if (data && !error && !loading) {
-      console.log(data);
-    }
-  }, [data, error, loading, fetchData]);
+  }, [data, fetchData]);
 
   return (
     <main>
-      {loading && <LoadingCloseCountries />}
+      {loading && (!error || !data) && <LoadingRowList />}
+      {error && <Error>{error}</Error>}
       <ul>
         {data &&
           data.map((country, index) => (
