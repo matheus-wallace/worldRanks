@@ -3,37 +3,8 @@ import { renderHook } from '@testing-library/react';
 import { SWRConfig } from 'swr';
 import { DataCountryProvider, useContextCountry } from './CountryContext';
 import useSWR from 'swr';
+import { mockCountryData } from '@/utils/mocks/countryData';
 
-const mockData = [
-  {
-    name: {
-      common: 'Brazil',
-      official: 'Federative Republic of Brazil',
-      nativeName: {
-        por: {
-          official: 'República Federativa do Brasil',
-          common: 'Brasil',
-        },
-      },
-    },
-    flag: '🇧🇷',
-    flags: {
-      png: 'https://example.com/brazil.png',
-      svg: 'https://example.com/brazil.svg',
-      alt: 'Flag of Brazil',
-    },
-    capital: ['Brasília'],
-    region: 'Americas',
-    population: 211000000,
-    area: 8515767,
-    currencies: {
-      BRL: {
-        name: 'Brazilian real',
-        symbol: 'R$',
-      },
-    },
-  },
-];
 jest.mock('swr', () => ({
   __esModule: true,
   default: jest.fn(),
@@ -79,7 +50,7 @@ describe('DataCountryProvider', () => {
 
   it('should provide data from SWR', () => {
     (useSWR as jest.Mock).mockReturnValue({
-      data: mockData,
+      data: mockCountryData,
       error: null,
       isLoading: false,
     });
@@ -92,7 +63,7 @@ describe('DataCountryProvider', () => {
 
     const { result } = renderHook(() => useContextCountry(), { wrapper });
 
-    expect(result.current.data).toEqual(mockData);
+    expect(result.current.data).toEqual(mockCountryData);
     expect(result.current.error).toBeNull();
     expect(result.current.isLoading).toBe(false);
   });
