@@ -20,7 +20,7 @@ export const mockCountryData: Country[] = [
     },
     capital: ['Brasília'],
     region: 'Americas',
-    population: 211000000,
+    population: 212559409,
     area: 8515767,
     currencies: {
       BRL: {
