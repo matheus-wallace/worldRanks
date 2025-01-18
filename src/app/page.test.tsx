@@ -1,40 +1,19 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { useContextCountry } from '@/Context/DataContext';
+import { useContextCountry } from '@/Context/CountryContext';
 import Home from '@/app/page';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
+import { mockCountryData } from '@/utils/mocks/countryData';
 
-// Mock do contexto
-jest.mock('../Context/DataContext', () => ({
+jest.mock('../Context/CountryContext', () => ({
   useContextCountry: jest.fn(),
 }));
 
 describe('Home Component', () => {
-  it('should render the loading state initially', () => {
-    (useContextCountry as jest.Mock).mockReturnValue({
-      data: null,
-      error: null,
-      loading: true,
-      fetchData: jest.fn(),
-    });
-
-    render(
-      <ChakraProvider value={defaultSystem}>
-        <Home />
-      </ChakraProvider>,
-    );
-
-    expect(screen.getByTestId('skeletonLoading')).toBeInTheDocument();
-  });
-
   it('should render countries when data is available', async () => {
     (useContextCountry as jest.Mock).mockReturnValue({
-      data: [
-        { name: { common: 'Brasil' }, flag: '🇧🇷' },
-        { name: { common: 'Canada' }, flag: '🇨🇦' },
-      ],
+      data: mockCountryData,
       error: null,
       loading: false,
-      fetchData: jest.fn(),
     });
 
     render(
@@ -44,27 +23,11 @@ describe('Home Component', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText('Brasil - 🇧🇷')).toBeInTheDocument();
-      expect(screen.getByText('Canada - 🇨🇦')).toBeInTheDocument();
+      expect(screen.getByText('Brazil')).toBeInTheDocument();
+      expect(screen.getByText('212559409')).toBeInTheDocument();
+      expect(screen.getByText('8515767')).toBeInTheDocument();
+      expect(screen.getByText('Americas')).toBeInTheDocument();
     });
-  });
-
-  it('should handle fetchData call if no data is available', () => {
-    const fetchDataMock = jest.fn();
-
-    (useContextCountry as jest.Mock).mockReturnValue({
-      data: null,
-      error: null,
-      loading: false,
-      fetchData: fetchDataMock,
-    });
-
-    render(
-      <ChakraProvider value={defaultSystem}>
-        <Home />
-      </ChakraProvider>,
-    );
-    expect(fetchDataMock).toHaveBeenCalledTimes(1);
   });
 
   it('should render error component when there is an error', () => {
@@ -82,5 +45,42 @@ describe('Home Component', () => {
     );
 
     expect(screen.getByText('Network error')).toBeInTheDocument();
+  });
+
+  it('Render the strctured components', async () => {
+    (useContextCountry as jest.Mock).mockReturnValue({
+      data: mockCountryData,
+      error: null,
+      loading: false,
+      fetchData: jest.fn(),
+    });
+
+    render(
+      <ChakraProvider value={defaultSystem}>
+        <Home />
+      </ChakraProvider>,
+    );
+
+    await waitFor(() => {
+      const articles = screen.getAllByRole('article');
+
+      articles.forEach((article) => {
+        expect(article).toBeInTheDocument();
+      });
+    });
+  });
+
+  it('Shoould Render a list of filters', () => {
+    render(
+      <ChakraProvider value={defaultSystem}>
+        <Home />
+      </ChakraProvider>,
+    );
+
+    const articles = screen.getAllByText('Test filters');
+
+    articles.forEach((article) => {
+      expect(article).toBeInTheDocument();
+    });
   });
 });

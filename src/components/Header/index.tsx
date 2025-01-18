@@ -14,7 +14,14 @@ const Header = () => {
           priority
         />
         <OverlayImage data-testid="overlay-image">
-          <Image src={'/assets/Logo.svg'} width={250} height={250} alt="Logo world Ranks" />
+          <Image
+            src="/assets/Logo.svg"
+            alt="Logo world Ranks"
+            width={250}
+            height={250}
+            style={{ maxWidth: '100%', height: 'auto' }}
+            priority
+          />
         </OverlayImage>
       </HeaderContainer>
     </header>

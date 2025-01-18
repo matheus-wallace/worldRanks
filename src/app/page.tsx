@@ -1,31 +1,35 @@
 'use client';
-import { useContextCountry } from '@/Context/DataContext';
+import { useContextCountry } from '@/Context/CountryContext';
 import './global.css';
-import { useEffect } from 'react';
-import { LoadingRowList } from '@/components/LoadingSkeleton';
 import Error from '@/components/Error';
+import { CountrysFilterContainer, CountrysTableContainer, ListContainer } from './styles';
+import { Center } from '@chakra-ui/react';
+import CountryTableDataReciver from '@/components/CountryTable';
 
 export default function Home() {
-  const { data, error, loading, fetchData } = useContextCountry();
-
-  useEffect(() => {
-    if (!data) {
-      fetchData();
-    }
-  }, [data, fetchData]);
+  const { data, error, isLoading } = useContextCountry();
 
   return (
     <main>
-      {loading && (!error || !data) && <LoadingRowList />}
-      {error && <Error>{error}</Error>}
-      <ul>
-        {data &&
-          data.map((country, index) => (
-            <li key={index}>
-              {country.name.common} - {country.flag}
-            </li>
-          ))}
-      </ul>
+      <Center>
+        {error && <Error>{error}</Error>}
+        {(data || isLoading) && (
+          <ListContainer>
+            <CountrysFilterContainer>
+              <p>Test filters</p>
+              <p>Test filters</p>
+              <p>Test filters</p>
+              <p>Test filters</p>
+              <p>Test filters</p>
+              <p>Test filters</p>
+            </CountrysFilterContainer>
+
+            <CountrysTableContainer>
+              <CountryTableDataReciver data={data} isLoading={isLoading} error={error} />
+            </CountrysTableContainer>
+          </ListContainer>
+        )}
+      </Center>
     </main>
   );
 }

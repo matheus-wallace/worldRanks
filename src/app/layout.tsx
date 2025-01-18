@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { Provider } from '@/components/ui/provider';
 import Header from '@/components/Header';
-import { DataCountryProvider } from '@/Context/DataContext';
+import { DataCountryProvider } from '@/Context/CountryContext';
 
 export const metadata: Metadata = {
   title: 'World Ranks',
