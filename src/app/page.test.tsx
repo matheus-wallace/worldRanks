@@ -24,6 +24,9 @@ describe('Home Component', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Brazil')).toBeInTheDocument();
+      expect(screen.getByText('211000000')).toBeInTheDocument();
+      expect(screen.getByText('8515767')).toBeInTheDocument();
+      expect(screen.getByText('Americas')).toBeInTheDocument();
     });
   });
 
