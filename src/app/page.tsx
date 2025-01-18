@@ -25,7 +25,7 @@ export default function Home() {
             </CountrysFilterContainer>
 
             <CountrysTableContainer>
-              <CountryTableDataReciver data={data} loading={isLoading} />
+              <CountryTableDataReciver data={data} isLoading={isLoading} error={error} />
             </CountrysTableContainer>
           </ListContainer>
         )}
