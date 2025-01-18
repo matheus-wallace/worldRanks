@@ -5,7 +5,7 @@ import { Table } from '@chakra-ui/react';
 
 const CountryTableDataReciver = ({ data, isLoading }: DataContextType) => {
   return (
-    <Table.Root data-testid="CountryTableContainer" variant={'unstyled'}>
+    <Table.Root data-testid="CountryTableContainer">
       <Table.Header>
         <Table.Row>
           <Table.ColumnHeader>Flag</Table.ColumnHeader>
