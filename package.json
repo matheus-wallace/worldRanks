@@ -10,8 +10,9 @@
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "next lint --dir .",
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --coverage",
     "test:watch": "jest --watch --passWithNoTests",
+    "test:watch:coverage": "jest --watch --passWithNoTests --coverage",
     "prepare": "husky",
     "commit": "cz"
   },
