@@ -31,7 +31,7 @@ export type Country = {
   };
 };
 
-type DataContextType = {
+export type DataContextType = {
   data: Country[] | null;
   error: string | null;
   isLoading: boolean;
