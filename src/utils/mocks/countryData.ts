@@ -1,4 +1,6 @@
-export const mockCountryData = [
+import { Country } from '@/Context/CountryContext';
+
+export const mockCountryData: Country[] = [
   {
     name: {
       common: 'Brazil',
@@ -24,6 +26,34 @@ export const mockCountryData = [
       BRL: {
         name: 'Brazilian real',
         symbol: 'R$',
+      },
+    },
+  },
+  {
+    name: {
+      common: 'Germany',
+      official: 'Federal Republic of Germany',
+      nativeName: {
+        deu: {
+          official: 'Bundesrepublik Deutschland',
+          common: 'Deutschland',
+        },
+      },
+    },
+    flag: '🇩🇪',
+    flags: {
+      png: 'https://flagcdn.com/w320/de.png',
+      svg: 'https://flagcdn.com/de.svg',
+      alt: 'The flag of Germany is composed of three equal horizontal bands of black, red and gold.',
+    },
+    capital: ['Berlin'],
+    region: 'Europe',
+    area: 357114.0,
+    population: 83240525,
+    currencies: {
+      EUR: {
+        name: 'Euro',
+        symbol: '€',
       },
     },
   },
