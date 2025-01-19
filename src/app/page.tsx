@@ -5,6 +5,7 @@ import Error from '@/components/Error';
 import { CountrysFilterContainer, CountrysTableContainer, ListContainer } from './styles';
 import { Center } from '@chakra-ui/react';
 import CountryTableDataReciver from '@/components/CountryTable';
+import FilterControls from '@/components/FilterControls';
 
 export default function Home() {
   const { data, error, isLoading } = useContextCountry();
@@ -15,12 +16,7 @@ export default function Home() {
         {(data || isLoading) && (
           <ListContainer>
             <CountrysFilterContainer>
-              <p>Test filters</p>
-              <p>Test filters</p>
-              <p>Test filters</p>
-              <p>Test filters</p>
-              <p>Test filters</p>
-              <p>Test filters</p>
+              <FilterControls />
             </CountrysFilterContainer>
 
             <CountrysTableContainer>

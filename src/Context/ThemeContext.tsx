@@ -23,6 +23,14 @@ export interface Theme {
     tablet: string;
     desktop: string;
   };
+
+  colors: {
+    darkGray: string;
+    darkSoftGray: string;
+    blue: string;
+    lightGray: string;
+    withe: string;
+  };
 }
 
 export interface ThemeContextProps {
@@ -50,6 +58,14 @@ export const theme: Theme = {
     mobile: '640px',
     tablet: '1024px',
     desktop: '1280px',
+  },
+
+  colors: {
+    darkGray: '#1B1D1F',
+    darkSoftGray: '#282B30',
+    blue: '#4E80EE',
+    lightGray: '#6C727F',
+    withe: '#D2D5DA',
   },
 };
 
