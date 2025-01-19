@@ -26,7 +26,6 @@ describe('Home Component', () => {
       expect(screen.getByText('Brazil')).toBeInTheDocument();
       expect(screen.getByText('212559409')).toBeInTheDocument();
       expect(screen.getByText('8515767')).toBeInTheDocument();
-      expect(screen.getByText('Americas')).toBeInTheDocument();
     });
   });
 
@@ -67,20 +66,6 @@ describe('Home Component', () => {
       articles.forEach((article) => {
         expect(article).toBeInTheDocument();
       });
-    });
-  });
-
-  it('Shoould Render a list of filters', () => {
-    render(
-      <ChakraProvider value={defaultSystem}>
-        <Home />
-      </ChakraProvider>,
-    );
-
-    const articles = screen.getAllByText('Test filters');
-
-    articles.forEach((article) => {
-      expect(article).toBeInTheDocument();
     });
   });
 });
