@@ -11,8 +11,10 @@ jest.mock('swr', () => ({
   SWRConfig: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
+global.fetch = jest.fn();
+
 describe('DataCountryProvider', () => {
-  it('should handle loading state', () => {
+  it('should loading when is fetching', () => {
     (useSWR as jest.Mock).mockReturnValue({
       data: null,
       error: null,
@@ -28,24 +30,6 @@ describe('DataCountryProvider', () => {
     expect(result.current.data).toBeNull();
     expect(result.current.data).toBeNull();
     expect(result.current.isLoading).toBe(true);
-  });
-
-  it('should handle error state', () => {
-    (useSWR as jest.Mock).mockReturnValue({
-      data: null,
-      error: 'Failed to fetch',
-      isLoading: false,
-    });
-
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <DataCountryProvider>{children}</DataCountryProvider>
-    );
-
-    const { result } = renderHook(() => useContextCountry(), { wrapper });
-
-    expect(result.current.data).toBeNull();
-    expect(result.current.isLoading).toBe(false);
-    expect(result.current.error).toBe('Failed to fetch');
   });
 
   it('should provide data from SWR', () => {
@@ -65,6 +49,24 @@ describe('DataCountryProvider', () => {
 
     expect(result.current.data).toEqual(mockCountryData);
     expect(result.current.error).toBeNull();
+    expect(result.current.isLoading).toBe(false);
+  });
+
+  it('should handle error when useSWR returns an error', () => {
+    (useSWR as jest.Mock).mockReturnValueOnce({
+      data: null,
+      error: new Error('Something went wrong :('),
+      isLoading: false,
+    });
+
+    const wrapper = ({ children }: { children: React.ReactNode }) => (
+      <DataCountryProvider>{children}</DataCountryProvider>
+    );
+
+    const { result } = renderHook(() => useContextCountry(), { wrapper });
+
+    expect(result.current.error).toEqual('Something went wrong :(');
+    expect(result.current.data).toBeNull();
     expect(result.current.isLoading).toBe(false);
   });
 });

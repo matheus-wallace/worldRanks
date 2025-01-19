@@ -8,7 +8,6 @@ import CountryTableDataReciver from '@/components/CountryTable';
 
 export default function Home() {
   const { data, error, isLoading } = useContextCountry();
-
   return (
     <main>
       <Center>
