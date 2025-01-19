@@ -8,9 +8,12 @@ export const ListContainer = styled.section`
   background-color: '#282B30';
   border: 1px solid '#6C727F';
   display: grid;
-  grid-template-columns: 1fr 8fr;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
 `;
 
-export const CountrysFilterContainer = styled.article``;
+export const CountrysFilterContainer = styled.article`
+  max-width: 80%;
+`;
 
 export const CountrysTableContainer = styled.article``;
