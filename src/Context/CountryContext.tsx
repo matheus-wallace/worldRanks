@@ -52,13 +52,20 @@ type DataCountryProviderProps = {
 };
 
 export const DataCountryProvider = ({ children }: DataCountryProviderProps) => {
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const fetcher = async (url: string) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Something went wrong :(');
+    }
+    const json = await response.json();
+    return json;
+  };
 
   const { data, error, isLoading } = useSWR(`https://restcountries.com/v3.1/all`, fetcher);
 
   const value = {
     data,
-    error,
+    error: error ? error.message : null,
     isLoading,
   };
 
