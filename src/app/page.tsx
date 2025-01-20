@@ -16,7 +16,7 @@ export default function Home() {
         {(data || isLoading) && (
           <ListContainer>
             <CountrysFilterContainer>
-              <FilterControls />
+              <FilterControls data-testid="filterControls" />
             </CountrysFilterContainer>
 
             <CountrysTableContainer>

@@ -14,10 +14,8 @@ const ToogleButton = ({ text }: { text: string }) => {
     <Button
       backgroundColor={`${active ? colors.withe : colors.darkSoftGray}`}
       onClick={handleClick}
-      paddingTop={'.5'}
-      paddingBottom={'.5'}
-      paddingLeft={'3'}
-      paddingRight={'3'}
+      paddingY={'.5'}
+      paddingX={'3'}
       borderRadius={'2xl'}
     >
       {text}
