@@ -10,6 +10,7 @@ export interface Theme {
     small: string;
     smallxl: string;
     regular: string;
+    regularXL: string;
     large: string;
   };
 
@@ -46,7 +47,8 @@ export const theme: Theme = {
     small: '0.75rem',
     smallxl: '0.875rem',
     regular: '1rem',
-    large: '25rem',
+    regularXL: '1.8rem',
+    large: '2.5rem',
   },
 
   fontWeights: {
