@@ -13,7 +13,7 @@ describe('CountryTable', () => {
 
     const skeleton = screen.getAllByTestId('skeletonLoading');
 
-    expect(skeleton).toHaveLength(10);
+    expect(skeleton).toHaveLength(8);
   });
 
   it('should render a title colums', () => {
