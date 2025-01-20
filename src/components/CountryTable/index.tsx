@@ -23,7 +23,14 @@ const CountryTableDataReciver = ({ data, isLoading }: DataContextType) => {
             <Table.Cell fontSize={fontSize.large} paddingY="1rem">
               {isLoading ? <FlagSkeleton /> : country.flag}
             </Table.Cell>
-            <Table.Cell fontSize={fontSize.regular} paddingY="1rem">
+            <Table.Cell
+              fontSize={fontSize.regular}
+              paddingY="1rem"
+              maxWidth="150px"
+              whiteSpace="nowrap"
+              overflow="hidden"
+              textOverflow="ellipsis"
+            >
               {isLoading ? <LoadingRow /> : country.name.common}
             </Table.Cell>
             <Table.Cell fontSize={fontSize.regular} paddingY="1rem">
