@@ -10,9 +10,7 @@ export const ListContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 2fr;
   position: absolute;
-  top: 17rem;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateY(49.6%);
   border-radius: 1rem;
 `;
 
